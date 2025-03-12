@@ -19,6 +19,7 @@
         const type1 = ["Bruce", "Strange", "Groot", "Thing", "Magneto", "Peni", "Venom", "Cap", "Thor"];
         const type2 = ["Black Panther", "Bucky", "Wolverine", "Psylocke", "Squirrel Girl", "Iron Fist", "Moon Knight", "Black Widow", "Hawkeye", "Human Torch", "Mr. Fantastic", "Hela", "Iron Man", "Magik", "Namor", "Punisher", "Wanda", "Spider-Man", "Star-Lord", "Storm"];
         const type3 = ["Loki", "Luna", "Adam Warlock", "Jeff", "Mantis", "Invisible Woman", "Rocket", "Cloak and Dagger"];
+        const names = ["Hayden", "Riley", "Tanner", "Pat", "Trey"];
 
         function getRandomElements(array, count) {
             let shuffled = array.slice().sort(() => 0.5 - Math.random());
@@ -31,7 +32,17 @@
                 ...getRandomElements(type2, 2),
                 ...getRandomElements(type3, 2)
             ];
-            document.getElementById("team").innerHTML = "Team:<br/><br/>" + team.join("<br/><br/>");
+            
+            let assignedNames = getRandomElements(names, 5);
+            let randomIndexes = getRandomElements([0, 1, 2, 3, 4, 5], 5);
+            let teamWithNames = team.slice();
+
+            randomIndexes.forEach((index, i) => {
+                teamWithNames[index] = `<strong>${assignedNames[i]}</strong> - ${team[index]}`;
+            });
+            
+            document.getElementById("team").innerHTML = "Team:<br/><br/>" + teamWithNames.join("<br/><br/>");
+        
         }
     </script>
 </body>
