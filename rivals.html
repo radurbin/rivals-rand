@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Team Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 10px 20px; font-size: 16px; }
+        #team { margin-top: 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Random Team Generator</h1>
+    <button onclick="generateTeam()">Generate Team</button>
+    <div id="team"></div>
+
+    <script>
+        const type1 = ["Bruce", "Strange", "Groot", "Thing", "Magneto", "Peni", "Venom", "Cap", "Thor"];
+        const type2 = ["Black Panther", "Bucky", "Wolverine", "Psylocke", "Squirrel Girl", "Iron Fist", "Moon Knight", "Black Widow", "Hawkeye", "Human Torch", "Mr. Fantastic", "Hela", "Iron Man", "Magik", "Namor", "Punisher", "Wanda", "Spider-Man", "Star-Lord", "Storm"];
+        const type3 = ["Loki", "Luna", "Adam Warlock", "Jeff", "Mantis", "Invisible Woman", "Rocket", "Cloak and Dagger"];
+
+        function getRandomElements(array, count) {
+            let shuffled = array.slice().sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        function generateTeam() {
+            let team = [
+                ...getRandomElements(type1, 2),
+                ...getRandomElements(type2, 2),
+                ...getRandomElements(type3, 2)
+            ];
+            document.getElementById("team").innerHTML = "Team:<br/><br/>" + team.join("<br/><br/>");
+        }
+    </script>
+</body>
+</html>
